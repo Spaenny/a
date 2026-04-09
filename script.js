@@ -14,15 +14,12 @@ const THEME_KEY = 'enauto_theme_v1';
 // ============================
 // Utility
 // ============================
-function normalizeText(v) {
-  return String(v ?? '').trim().toLowerCase();
-}
-
-function toArray(v) {
-  if (Array.isArray(v)) return v;
-  if (v == null) return [];
-  return [v];
-}
+const {
+  normalizeText,
+  getCorrectField,
+  inferType,
+  scoreExam: scoreExamCore
+} = window.ExamCore;
 
 function deepClone(v) {
   return JSON.parse(JSON.stringify(v));
@@ -50,35 +47,6 @@ function nonEmpty(answer) {
   }
   if (Array.isArray(answer)) return answer.length > 0;
   return String(answer ?? '').trim().length > 0;
-}
-
-function compareArraysInsensitiveSorted(a, b) {
-  const na = toArray(a).map(normalizeText).sort();
-  const nb = toArray(b).map(normalizeText).sort();
-  if (na.length !== nb.length) return false;
-  for (let i = 0; i < na.length; i++) {
-    if (na[i] !== nb[i]) return false;
-  }
-  return true;
-}
-
-function getCorrectField(q) {
-  // Handles banks with either c or correct
-  return q && (q.c !== undefined ? q.c : q.correct);
-}
-
-function inferType(q) {
-  const t = normalizeText(q.type);
-  if (['single', 'single-choice', 'radio'].includes(t)) return 'single';
-  if (['multiple', 'multi', 'multiple-choice', 'checkbox'].includes(t)) return 'multiple';
-  if (['fill', 'fill-in', 'text', 'input'].includes(t)) return 'fill';
-  if (['lab', 'short-answer', 'api'].includes(t)) return 'lab';
-  if (['dragdrop', 'drag', 'drag-and-drop', 'order', 'ordering'].includes(t)) return 'dragdrop';
-
-  const correct = getCorrectField(q);
-  if (Array.isArray(correct) && Array.isArray(q.options)) return 'multiple';
-  if (Array.isArray(q.options)) return 'single';
-  return 'fill';
 }
 
 function fallbackPool() {
@@ -189,6 +157,7 @@ function initializeExam() {
 }
 
 function setAnswer(index, value) {
+  if (JSON.stringify(state.answers[index]) === JSON.stringify(value)) return;
   state.answers[index] = value;
   saveState();
 }
@@ -230,56 +199,15 @@ function startTimer() {
 // ============================
 // Scoring
 // ============================
-function isCorrect(question, answer) {
-  const correct = getCorrectField(question);
-  const type = question._type;
-
-  if (type === 'single') {
-    return normalizeText(answer) === normalizeText(correct);
-  }
-
-  if (type === 'multiple') {
-    return compareArraysInsensitiveSorted(answer, correct);
-  }
-
-  if (type === 'fill' || type === 'lab') {
-    if (Array.isArray(correct)) {
-      return correct.map(normalizeText).includes(normalizeText(answer));
-    }
-    return normalizeText(answer) === normalizeText(correct);
-  }
-
-  if (type === 'dragdrop') {
-    const expected = toArray(correct).map(v => String(v));
-    const actual = toArray(answer).map(v => String(v)).filter(v => normalizeText(v).length > 0);
-    if (expected.length !== actual.length) return false;
-    for (let i = 0; i < expected.length; i++) {
-      if (normalizeText(expected[i]) !== normalizeText(actual[i])) return false;
-    }
-    return true;
-  }
-
-  return false;
-}
-
 function scoreExam() {
-  let correctCount = 0;
-  const details = state.questions.map((q, i) => {
-    const ok = isCorrect(q, state.answers[i]);
-    if (ok) correctCount += 1;
-    return { index: i, ok };
+  return scoreExamCore({
+    questions: state.questions,
+    answers: state.answers,
+    questionCount: EXAM_QUESTION_COUNT,
+    scoreMin: SCORE_MIN,
+    scoreMax: SCORE_MAX,
+    passScore: PASS_SCORE
   });
-
-  const raw = correctCount / EXAM_QUESTION_COUNT;
-  const scaled = Math.round(SCORE_MIN + raw * (SCORE_MAX - SCORE_MIN));
-
-  return {
-    correctCount,
-    raw,
-    scaled,
-    passed: scaled >= PASS_SCORE,
-    details
-  };
 }
 
 // ============================

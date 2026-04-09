@@ -88,9 +88,31 @@
     .qbtn.current { border-color: var(--primary); background: var(--primary-soft); }
 
     .drag-help { margin-top: 8px; color: var(--muted); font-size: 13px; }
-    .drag-zone {
-      margin-top: 10px; border: 2px dashed var(--primary); border-radius: 10px; padding: 10px;
-      background: color-mix(in srgb, var(--primary-soft) 35%, transparent);
+    .drag-board {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .drag-panel {
+      border: 2px dashed var(--primary);
+      border-radius: 10px;
+      padding: 10px;
+      background: color-mix(in srgb, var(--primary-soft) 20%, transparent);
+    }
+    .drag-panel-title {
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .pool-zone {
+      min-height: 120px;
+      padding: 4px;
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+    }
+    .steps-zone {
+      display: grid;
+      gap: 8px;
     }
     .drag-item {
       margin: 6px 0; border: 1px solid var(--border); border-radius: 8px; padding: 10px; background: var(--panel);
@@ -139,6 +161,7 @@
   </div>
 
   <script src="pool.js"></script>
+  <script src="core.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

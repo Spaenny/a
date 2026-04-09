@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CCNP ENAUTO Exam Simulator</title>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --panel: #fff;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --primary: #2563eb;
+      --primary-soft: #dbeafe;
+      --danger: #dc2626;
+      --success: #16a34a;
+      --flag: #f59e0b;
+    }
+    body.dark {
+      --bg: #0f172a;
+      --panel: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #374151;
+      --primary: #60a5fa;
+      --primary-soft: #1e3a8a;
+      --danger: #f87171;
+      --success: #4ade80;
+      --flag: #fbbf24;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 16px; }
+    .top {
+      display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    .badge {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+      padding: 8px 12px; font-weight: 600;
+    }
+    .timer { color: var(--danger); font-weight: 800; }
+    .card {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 16px;
+      box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    }
+    .muted { color: var(--muted); }
+    .question { margin: 0 0 12px; line-height: 1.45; }
+    .pill {
+      display: inline-flex; border: 1px solid var(--border); border-radius: 999px; padding: 4px 8px;
+      font-size: 12px; margin-right: 6px;
+    }
+    .options { display: grid; gap: 10px; margin-top: 10px; }
+    .option {
+      display: flex; gap: 10px; align-items: flex-start; border: 1px solid var(--border);
+      border-radius: 10px; padding: 10px; cursor: pointer;
+    }
+    .option.selected { border-color: var(--primary); background: var(--primary-soft); }
+    input[type="text"], textarea {
+      width: 100%; border: 1px solid var(--border); border-radius: 8px; padding: 10px;
+      background: transparent; color: var(--text);
+    }
+    .controls {
+      margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between;
+    }
+    .left, .right { display: flex; gap: 8px; flex-wrap: wrap; }
+    button {
+      border: 1px solid var(--border); border-radius: 8px; background: var(--panel);
+      color: var(--text); padding: 10px 12px; font-weight: 600; cursor: pointer;
+    }
+    button.primary { background: var(--primary); border-color: var(--primary); color: #fff; }
+    button.warn { border-color: var(--danger); color: var(--danger); }
+    button:disabled { opacity: .6; cursor: not-allowed; }
+
+    .navigator { margin-top: 12px; display: grid; grid-template-columns: repeat(auto-fill,minmax(46px,1fr)); gap: 8px; }
+    .qbtn {
+      height: 42px; border-radius: 8px; border: 1px solid var(--border); background: var(--panel);
+      font-weight: 700; cursor: pointer;
+    }
+    .qbtn.answered { border-color: var(--success); }
+    .qbtn.flagged { outline: 2px solid var(--flag); }
+    .qbtn.current { border-color: var(--primary); background: var(--primary-soft); }
+
+    .drag-help { margin-top: 8px; color: var(--muted); font-size: 13px; }
+    .drag-board {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .drag-panel {
+      border: 2px dashed var(--primary);
+      border-radius: 10px;
+      padding: 10px;
+      background: color-mix(in srgb, var(--primary-soft) 20%, transparent);
+    }
+    .drag-panel-title {
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .pool-zone {
+      min-height: 120px;
+      padding: 4px;
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+    }
+    .steps-zone {
+      display: grid;
+      gap: 8px;
+    }
+    .drag-item {
+      margin: 6px 0; border: 1px solid var(--border); border-radius: 8px; padding: 10px; background: var(--panel);
+      cursor: grab; user-select: none; display: flex; align-items: center; gap: 8px;
+    }
+    .drag-item.dragging { opacity: .5; }
+    .drag-order {
+      min-width: 24px; height: 24px; border-radius: 999px; border: 1px solid var(--primary);
+      background: var(--primary-soft); color: var(--text); display: inline-flex;
+      align-items: center; justify-content: center; font-weight: 700; font-size: 12px;
+    }
+    .drag-value { flex: 1; }
+    .step-slot {
+      border: 1px dashed var(--primary);
+      border-radius: 8px;
+      padding: 8px;
+      min-height: 64px;
+      transition: .1s ease;
+    }
+    .step-slot.filled { border-style: solid; }
+    .step-slot.active, .pool-zone.active { background: var(--primary-soft); border-color: var(--primary); }
+    .step-label { font-size: 12px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+    .step-drop-hint { font-size: 12px; color: var(--muted); }
+
+    @media (max-width: 680px) {
+      button { width: 100%; }
+      .controls { flex-direction: column; }
+      .left, .right { width: 100%; }
+      .drag-board { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <div class="badge">CCNP ENAUTO Exam Simulator</div>
+        <div id="progress" class="badge">Question 1 / 60</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button id="themeBtn" type="button">🌙 Dark Mode</button>
+        <div id="timer" class="badge timer">90:00</div>
+      </div>
+    </div>
+    <main id="app" class="card"></main>
+  </div>
+
+  <script src="pool.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

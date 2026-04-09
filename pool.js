@@ -31,15 +31,15 @@ window.pool = [
   {
     "id": "ENAUTO-003",
     "type": "fill",
-    "question": "[YANG models] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[YANG models] You need to read the current resource state from IOS XE without changing anything. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "c": "get"
   },
   {
     "id": "ENAUTO-004",
     "type": "lab",
-    "question": "[Cisco DNA Center] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[Cisco DNA Center] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"Cisco DNA Center\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"up\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "up"
   },
   {
@@ -90,8 +90,8 @@ window.pool = [
   {
     "id": "ENAUTO-008",
     "type": "fill",
-    "question": "[Python requests] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[Python requests] You need to create a new resource record on the controller/API endpoint. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "correct": [
       "post",
       "POST"
@@ -100,8 +100,8 @@ window.pool = [
   {
     "id": "ENAUTO-009",
     "type": "lab",
-    "question": "[Jinja2 templates] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[Jinja2 templates] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"Jinja2 templates\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"down\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "c": [
       "down",
       "DOWN"
@@ -155,15 +155,15 @@ window.pool = [
   {
     "id": "ENAUTO-013",
     "type": "fill",
-    "question": "[OAuth2 tokens] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[OAuth2 tokens] You must replace the full existing resource with a complete new representation. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "c": "put"
   },
   {
     "id": "ENAUTO-014",
     "type": "lab",
-    "question": "[API rate limiting] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[API rate limiting] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"API rate limiting\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"success\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "success"
   },
   {
@@ -214,8 +214,8 @@ window.pool = [
   {
     "id": "ENAUTO-018",
     "type": "fill",
-    "question": "[SNMP telemetry] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[SNMP telemetry] You only need to modify one or two fields on an existing resource. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "correct": [
       "patch",
       "PATCH"
@@ -224,8 +224,8 @@ window.pool = [
   {
     "id": "ENAUTO-019",
     "type": "lab",
-    "question": "[gNMI subscriptions] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[gNMI subscriptions] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"gNMI subscriptions\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"failed\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "c": [
       "failed",
       "FAILED"
@@ -279,15 +279,15 @@ window.pool = [
   {
     "id": "ENAUTO-023",
     "type": "fill",
-    "question": "[on-box Python] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[on-box Python] You must remove an existing resource from the API-managed inventory. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "c": "delete"
   },
   {
     "id": "ENAUTO-024",
     "type": "lab",
-    "question": "[pyATS] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[pyATS] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"pyATS\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"reachable\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "reachable"
   },
   {
@@ -338,8 +338,8 @@ window.pool = [
   {
     "id": "ENAUTO-028",
     "type": "fill",
-    "question": "[idempotency] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[idempotency] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "correct": [
       "json",
       "JSON"
@@ -348,8 +348,8 @@ window.pool = [
   {
     "id": "ENAUTO-029",
     "type": "lab",
-    "question": "[state validation] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[state validation] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"state validation\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"unreachable\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "c": [
       "unreachable",
       "UNREACHABLE"
@@ -403,15 +403,15 @@ window.pool = [
   {
     "id": "ENAUTO-033",
     "type": "fill",
-    "question": "[QoS policy deployment] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[QoS policy deployment] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "c": "yaml"
   },
   {
     "id": "ENAUTO-034",
     "type": "lab",
-    "question": "[BGP neighbor checks] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[BGP neighbor checks] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"BGP neighbor checks\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"active\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "active"
   },
   {
@@ -462,8 +462,8 @@ window.pool = [
   {
     "id": "ENAUTO-038",
     "type": "fill",
-    "question": "[AAA configuration] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[AAA configuration] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "correct": [
       "token",
       "TOKEN"
@@ -472,8 +472,8 @@ window.pool = [
   {
     "id": "ENAUTO-039",
     "type": "lab",
-    "question": "[Syslog pipelines] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[Syslog pipelines] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"Syslog pipelines\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"standby\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "c": [
       "standby",
       "STANDBY"
@@ -527,15 +527,15 @@ window.pool = [
   {
     "id": "ENAUTO-043",
     "type": "fill",
-    "question": "[YANG models] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[YANG models] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "c": "timeout"
   },
   {
     "id": "ENAUTO-044",
     "type": "lab",
-    "question": "[Cisco DNA Center] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[Cisco DNA Center] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"Cisco DNA Center\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"up\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "up"
   },
   {
@@ -586,8 +586,8 @@ window.pool = [
   {
     "id": "ENAUTO-048",
     "type": "fill",
-    "question": "[Python requests] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[Python requests] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "correct": [
       "retry",
       "RETRY"
@@ -596,8 +596,8 @@ window.pool = [
   {
     "id": "ENAUTO-049",
     "type": "lab",
-    "question": "[Jinja2 templates] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[Jinja2 templates] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"Jinja2 templates\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"down\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "c": [
       "down",
       "DOWN"
@@ -651,15 +651,15 @@ window.pool = [
   {
     "id": "ENAUTO-053",
     "type": "fill",
-    "question": "[OAuth2 tokens] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[OAuth2 tokens] You need to read the current resource state from IOS XE without changing anything. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "c": "get"
   },
   {
     "id": "ENAUTO-054",
     "type": "lab",
-    "question": "[API rate limiting] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[API rate limiting] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"API rate limiting\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"success\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "success"
   },
   {
@@ -710,8 +710,8 @@ window.pool = [
   {
     "id": "ENAUTO-058",
     "type": "fill",
-    "question": "[SNMP telemetry] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[SNMP telemetry] You need to create a new resource record on the controller/API endpoint. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "correct": [
       "post",
       "POST"
@@ -720,8 +720,8 @@ window.pool = [
   {
     "id": "ENAUTO-059",
     "type": "lab",
-    "question": "[gNMI subscriptions] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[gNMI subscriptions] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"gNMI subscriptions\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"failed\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "c": [
       "failed",
       "FAILED"
@@ -775,15 +775,15 @@ window.pool = [
   {
     "id": "ENAUTO-063",
     "type": "fill",
-    "question": "[on-box Python] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[on-box Python] You must replace the full existing resource with a complete new representation. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "c": "put"
   },
   {
     "id": "ENAUTO-064",
     "type": "lab",
-    "question": "[pyATS] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[pyATS] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"pyATS\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"reachable\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "reachable"
   },
   {
@@ -834,8 +834,8 @@ window.pool = [
   {
     "id": "ENAUTO-068",
     "type": "fill",
-    "question": "[idempotency] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[idempotency] You only need to modify one or two fields on an existing resource. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "correct": [
       "patch",
       "PATCH"
@@ -844,8 +844,8 @@ window.pool = [
   {
     "id": "ENAUTO-069",
     "type": "lab",
-    "question": "[state validation] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[state validation] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"state validation\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"unreachable\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "c": [
       "unreachable",
       "UNREACHABLE"
@@ -899,15 +899,15 @@ window.pool = [
   {
     "id": "ENAUTO-073",
     "type": "fill",
-    "question": "[QoS policy deployment] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[QoS policy deployment] You must remove an existing resource from the API-managed inventory. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "c": "delete"
   },
   {
     "id": "ENAUTO-074",
     "type": "lab",
-    "question": "[BGP neighbor checks] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[BGP neighbor checks] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"BGP neighbor checks\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"active\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "active"
   },
   {
@@ -958,8 +958,8 @@ window.pool = [
   {
     "id": "ENAUTO-078",
     "type": "fill",
-    "question": "[AAA configuration] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[AAA configuration] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "correct": [
       "json",
       "JSON"
@@ -968,8 +968,8 @@ window.pool = [
   {
     "id": "ENAUTO-079",
     "type": "lab",
-    "question": "[Syslog pipelines] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[Syslog pipelines] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"Syslog pipelines\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"standby\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "c": [
       "standby",
       "STANDBY"
@@ -1023,15 +1023,15 @@ window.pool = [
   {
     "id": "ENAUTO-083",
     "type": "fill",
-    "question": "[YANG models] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[YANG models] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "c": "yaml"
   },
   {
     "id": "ENAUTO-084",
     "type": "lab",
-    "question": "[Cisco DNA Center] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[Cisco DNA Center] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"Cisco DNA Center\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"up\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "up"
   },
   {
@@ -1082,8 +1082,8 @@ window.pool = [
   {
     "id": "ENAUTO-088",
     "type": "fill",
-    "question": "[Python requests] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[Python requests] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "correct": [
       "token",
       "TOKEN"
@@ -1092,8 +1092,8 @@ window.pool = [
   {
     "id": "ENAUTO-089",
     "type": "lab",
-    "question": "[Jinja2 templates] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[Jinja2 templates] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"Jinja2 templates\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"down\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "c": [
       "down",
       "DOWN"
@@ -1147,15 +1147,15 @@ window.pool = [
   {
     "id": "ENAUTO-093",
     "type": "fill",
-    "question": "[OAuth2 tokens] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[OAuth2 tokens] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "c": "timeout"
   },
   {
     "id": "ENAUTO-094",
     "type": "lab",
-    "question": "[API rate limiting] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[API rate limiting] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"API rate limiting\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"success\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "success"
   },
   {
@@ -1206,8 +1206,8 @@ window.pool = [
   {
     "id": "ENAUTO-098",
     "type": "fill",
-    "question": "[SNMP telemetry] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[SNMP telemetry] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "correct": [
       "retry",
       "RETRY"
@@ -1216,8 +1216,8 @@ window.pool = [
   {
     "id": "ENAUTO-099",
     "type": "lab",
-    "question": "[gNMI subscriptions] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[gNMI subscriptions] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"gNMI subscriptions\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"failed\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "c": [
       "failed",
       "FAILED"
@@ -1271,15 +1271,15 @@ window.pool = [
   {
     "id": "ENAUTO-103",
     "type": "fill",
-    "question": "[on-box Python] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[on-box Python] You need to read the current resource state from IOS XE without changing anything. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "c": "get"
   },
   {
     "id": "ENAUTO-104",
     "type": "lab",
-    "question": "[pyATS] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[pyATS] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"pyATS\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"reachable\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "reachable"
   },
   {
@@ -1330,8 +1330,8 @@ window.pool = [
   {
     "id": "ENAUTO-108",
     "type": "fill",
-    "question": "[idempotency] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[idempotency] You need to create a new resource record on the controller/API endpoint. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "correct": [
       "post",
       "POST"
@@ -1340,8 +1340,8 @@ window.pool = [
   {
     "id": "ENAUTO-109",
     "type": "lab",
-    "question": "[state validation] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[state validation] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"state validation\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"unreachable\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "c": [
       "unreachable",
       "UNREACHABLE"
@@ -1395,15 +1395,15 @@ window.pool = [
   {
     "id": "ENAUTO-113",
     "type": "fill",
-    "question": "[QoS policy deployment] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[QoS policy deployment] You must replace the full existing resource with a complete new representation. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "c": "put"
   },
   {
     "id": "ENAUTO-114",
     "type": "lab",
-    "question": "[BGP neighbor checks] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[BGP neighbor checks] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"BGP neighbor checks\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"active\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "active"
   },
   {
@@ -1454,8 +1454,8 @@ window.pool = [
   {
     "id": "ENAUTO-118",
     "type": "fill",
-    "question": "[AAA configuration] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[AAA configuration] You only need to modify one or two fields on an existing resource. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "correct": [
       "patch",
       "PATCH"
@@ -1464,8 +1464,8 @@ window.pool = [
   {
     "id": "ENAUTO-119",
     "type": "lab",
-    "question": "[Syslog pipelines] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[Syslog pipelines] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"Syslog pipelines\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"standby\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "c": [
       "standby",
       "STANDBY"
@@ -1519,15 +1519,15 @@ window.pool = [
   {
     "id": "ENAUTO-123",
     "type": "fill",
-    "question": "[YANG models] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[YANG models] You must remove an existing resource from the API-managed inventory. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "c": "delete"
   },
   {
     "id": "ENAUTO-124",
     "type": "lab",
-    "question": "[Cisco DNA Center] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[Cisco DNA Center] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"Cisco DNA Center\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"up\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "up"
   },
   {
@@ -1578,8 +1578,8 @@ window.pool = [
   {
     "id": "ENAUTO-128",
     "type": "fill",
-    "question": "[Python requests] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[Python requests] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "correct": [
       "json",
       "JSON"
@@ -1588,8 +1588,8 @@ window.pool = [
   {
     "id": "ENAUTO-129",
     "type": "lab",
-    "question": "[Jinja2 templates] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[Jinja2 templates] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"Jinja2 templates\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"down\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "c": [
       "down",
       "DOWN"
@@ -1643,15 +1643,15 @@ window.pool = [
   {
     "id": "ENAUTO-133",
     "type": "fill",
-    "question": "[OAuth2 tokens] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[OAuth2 tokens] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "c": "yaml"
   },
   {
     "id": "ENAUTO-134",
     "type": "lab",
-    "question": "[API rate limiting] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[API rate limiting] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"API rate limiting\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"success\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "success"
   },
   {
@@ -1702,8 +1702,8 @@ window.pool = [
   {
     "id": "ENAUTO-138",
     "type": "fill",
-    "question": "[SNMP telemetry] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[SNMP telemetry] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "correct": [
       "token",
       "TOKEN"
@@ -1712,8 +1712,8 @@ window.pool = [
   {
     "id": "ENAUTO-139",
     "type": "lab",
-    "question": "[gNMI subscriptions] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[gNMI subscriptions] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"gNMI subscriptions\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"failed\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "c": [
       "failed",
       "FAILED"
@@ -1767,15 +1767,15 @@ window.pool = [
   {
     "id": "ENAUTO-143",
     "type": "fill",
-    "question": "[on-box Python] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[on-box Python] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "c": "timeout"
   },
   {
     "id": "ENAUTO-144",
     "type": "lab",
-    "question": "[pyATS] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[pyATS] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"pyATS\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"reachable\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "reachable"
   },
   {
@@ -1826,8 +1826,8 @@ window.pool = [
   {
     "id": "ENAUTO-148",
     "type": "fill",
-    "question": "[idempotency] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[idempotency] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "correct": [
       "retry",
       "RETRY"
@@ -1836,8 +1836,8 @@ window.pool = [
   {
     "id": "ENAUTO-149",
     "type": "lab",
-    "question": "[state validation] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[state validation] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"state validation\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"unreachable\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "c": [
       "unreachable",
       "UNREACHABLE"
@@ -1891,15 +1891,15 @@ window.pool = [
   {
     "id": "ENAUTO-153",
     "type": "fill",
-    "question": "[QoS policy deployment] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[QoS policy deployment] You need to read the current resource state from IOS XE without changing anything. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "c": "get"
   },
   {
     "id": "ENAUTO-154",
     "type": "lab",
-    "question": "[BGP neighbor checks] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[BGP neighbor checks] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"BGP neighbor checks\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"active\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "active"
   },
   {
@@ -1950,8 +1950,8 @@ window.pool = [
   {
     "id": "ENAUTO-158",
     "type": "fill",
-    "question": "[AAA configuration] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[AAA configuration] You need to create a new resource record on the controller/API endpoint. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "correct": [
       "post",
       "POST"
@@ -1960,8 +1960,8 @@ window.pool = [
   {
     "id": "ENAUTO-159",
     "type": "lab",
-    "question": "[Syslog pipelines] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[Syslog pipelines] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"Syslog pipelines\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"standby\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "c": [
       "standby",
       "STANDBY"
@@ -2015,15 +2015,15 @@ window.pool = [
   {
     "id": "ENAUTO-163",
     "type": "fill",
-    "question": "[YANG models] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[YANG models] You must replace the full existing resource with a complete new representation. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "c": "put"
   },
   {
     "id": "ENAUTO-164",
     "type": "lab",
-    "question": "[Cisco DNA Center] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[Cisco DNA Center] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"Cisco DNA Center\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"up\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "up"
   },
   {
@@ -2074,8 +2074,8 @@ window.pool = [
   {
     "id": "ENAUTO-168",
     "type": "fill",
-    "question": "[Python requests] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[Python requests] You only need to modify one or two fields on an existing resource. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "correct": [
       "patch",
       "PATCH"
@@ -2084,8 +2084,8 @@ window.pool = [
   {
     "id": "ENAUTO-169",
     "type": "lab",
-    "question": "[Jinja2 templates] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[Jinja2 templates] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"Jinja2 templates\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"down\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "c": [
       "down",
       "DOWN"
@@ -2139,15 +2139,15 @@ window.pool = [
   {
     "id": "ENAUTO-173",
     "type": "fill",
-    "question": "[OAuth2 tokens] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[OAuth2 tokens] You must remove an existing resource from the API-managed inventory. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "c": "delete"
   },
   {
     "id": "ENAUTO-174",
     "type": "lab",
-    "question": "[API rate limiting] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[API rate limiting] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"API rate limiting\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"success\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "success"
   },
   {
@@ -2198,8 +2198,8 @@ window.pool = [
   {
     "id": "ENAUTO-178",
     "type": "fill",
-    "question": "[SNMP telemetry] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[SNMP telemetry] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "correct": [
       "json",
       "JSON"
@@ -2208,8 +2208,8 @@ window.pool = [
   {
     "id": "ENAUTO-179",
     "type": "lab",
-    "question": "[gNMI subscriptions] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[gNMI subscriptions] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"gNMI subscriptions\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"failed\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "c": [
       "failed",
       "FAILED"
@@ -2263,15 +2263,15 @@ window.pool = [
   {
     "id": "ENAUTO-183",
     "type": "fill",
-    "question": "[on-box Python] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[on-box Python] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "c": "yaml"
   },
   {
     "id": "ENAUTO-184",
     "type": "lab",
-    "question": "[pyATS] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[pyATS] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"pyATS\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"reachable\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "reachable"
   },
   {
@@ -2322,8 +2322,8 @@ window.pool = [
   {
     "id": "ENAUTO-188",
     "type": "fill",
-    "question": "[idempotency] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[idempotency] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "correct": [
       "token",
       "TOKEN"
@@ -2332,8 +2332,8 @@ window.pool = [
   {
     "id": "ENAUTO-189",
     "type": "lab",
-    "question": "[state validation] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[state validation] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"state validation\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"unreachable\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "c": [
       "unreachable",
       "UNREACHABLE"
@@ -2387,15 +2387,15 @@ window.pool = [
   {
     "id": "ENAUTO-193",
     "type": "fill",
-    "question": "[QoS policy deployment] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[QoS policy deployment] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "c": "timeout"
   },
   {
     "id": "ENAUTO-194",
     "type": "lab",
-    "question": "[BGP neighbor checks] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[BGP neighbor checks] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"BGP neighbor checks\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"active\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "active"
   },
   {
@@ -2446,8 +2446,8 @@ window.pool = [
   {
     "id": "ENAUTO-198",
     "type": "fill",
-    "question": "[AAA configuration] Fill in the HTTP verb/keyword typically expected by this automation scenario.",
-    "prompt": "Provide a single lowercase term.",
+    "question": "[AAA configuration] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
+    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
     "correct": [
       "retry",
       "RETRY"
@@ -2456,8 +2456,8 @@ window.pool = [
   {
     "id": "ENAUTO-199",
     "type": "lab",
-    "question": "[Syslog pipelines] Based on the provided JSON/API output, identify the final device/service state.",
-    "prompt": "Answer with the state value only.",
+    "question": "[Syslog pipelines] Determine the final device/service state from the JSON/API output below.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"Syslog pipelines\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"standby\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "c": [
       "standby",
       "STANDBY"

@@ -11,3 +11,6 @@ When deployment completes, your simulator should be available at:
 - https://spaenny.github.io/a/
 
 If your GitHub username or repository name differs in casing, GitHub will still map the URL by owner/repo.
+
+
+> Note: The workflow uses `actions/configure-pages@v5` with `enablement: true` to auto-enable Pages when possible.

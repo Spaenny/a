@@ -87,16 +87,28 @@
     .qbtn.flagged { outline: 2px solid var(--flag); }
     .qbtn.current { border-color: var(--primary); background: var(--primary-soft); }
 
-    .drag-zone { margin-top: 10px; border: 1px dashed var(--border); border-radius: 10px; padding: 10px; }
+    .drag-help { margin-top: 8px; color: var(--muted); font-size: 13px; }
+    .drag-zone {
+      margin-top: 10px; border: 2px dashed var(--primary); border-radius: 10px; padding: 10px;
+      background: color-mix(in srgb, var(--primary-soft) 35%, transparent);
+    }
     .drag-item {
       margin: 6px 0; border: 1px solid var(--border); border-radius: 8px; padding: 10px; background: var(--panel);
-      cursor: grab; user-select: none;
+      cursor: grab; user-select: none; display: flex; align-items: center; gap: 8px;
     }
     .drag-item.dragging { opacity: .5; }
-    .drop-slot {
-      height: 10px; margin: 4px 0; border: 1px dashed var(--primary); border-radius: 8px; opacity: 0;
+    .drag-order {
+      min-width: 24px; height: 24px; border-radius: 999px; border: 1px solid var(--primary);
+      background: var(--primary-soft); color: var(--text); display: inline-flex;
+      align-items: center; justify-content: center; font-weight: 700; font-size: 12px;
     }
-    .drop-slot.active { opacity: 1; }
+    .drag-value { flex: 1; }
+    .drop-slot {
+      min-height: 26px; margin: 4px 0; border: 1px dashed var(--primary); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; color: var(--primary);
+      font-size: 12px; opacity: .45; transition: .1s ease;
+    }
+    .drop-slot.active { opacity: 1; background: var(--primary-soft); border-style: solid; }
 
     @media (max-width: 680px) {
       button { width: 100%; }

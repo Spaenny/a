@@ -283,13 +283,35 @@ function scoreExam() {
 // Drag and Drop
 // ============================
 function buildDragDrop(question, answer, index) {
+  const wrap = document.createElement('div');
+
+  const help = document.createElement('div');
+  help.className = 'drag-help';
+  help.textContent = 'Drag each item. Drop on a "Drop here" row. Numbers show your current order.';
+  wrap.appendChild(help);
+
   const container = document.createElement('div');
   container.className = 'drag-zone';
+  wrap.appendChild(container);
 
   const initial = Array.isArray(answer) && answer.length ? answer.slice() : question._displayOptions.slice();
 
+  function renderOrderNumbers() {
+    const items = Array.from(container.querySelectorAll('.drag-item'));
+    items.forEach((item, idx) => {
+      const badge = item.querySelector('.drag-order');
+      if (badge) badge.textContent = String(idx + 1);
+    });
+
+    const slots = Array.from(container.querySelectorAll('.drop-slot'));
+    slots.forEach((slot, idx) => {
+      slot.textContent = `Drop here (position ${idx + 1})`;
+    });
+  }
+
   function commitOrder() {
     const order = Array.from(container.querySelectorAll('.drag-item')).map(el => el.dataset.value);
+    renderOrderNumbers();
     setAnswer(index, order);
   }
 
@@ -325,7 +347,10 @@ function buildDragDrop(question, answer, index) {
     item.className = 'drag-item';
     item.draggable = true;
     item.dataset.value = text;
-    item.textContent = text;
+    item.innerHTML = `
+      <span class="drag-order">1</span>
+      <span class="drag-value">${text}</span>
+    `;
 
     item.addEventListener('dragstart', () => item.classList.add('dragging'));
     item.addEventListener('dragend', () => {
@@ -341,10 +366,12 @@ function buildDragDrop(question, answer, index) {
     container.appendChild(makeItem(String(value)));
   });
   container.appendChild(makeDropSlot());
+  renderOrderNumbers();
+  setAnswer(index, initial);
 
   container.addEventListener('dragover', e => e.preventDefault());
 
-  return container;
+  return wrap;
 }
 
 // ============================

@@ -45,9 +45,6 @@ function mmss(seconds) {
 }
 
 function nonEmpty(answer) {
-  if (answer && typeof answer === 'object' && !Array.isArray(answer) && Array.isArray(answer.steps)) {
-    return answer.steps.some(v => String(v ?? '').trim().length > 0);
-  }
   if (Array.isArray(answer)) return answer.length > 0;
   return String(answer ?? '').trim().length > 0;
 }
@@ -251,7 +248,7 @@ function isCorrect(question, answer) {
 
   if (type === 'dragdrop') {
     const expected = toArray(correct).map(v => String(v));
-    const actual = toArray(answer).map(v => String(v)).filter(v => normalizeText(v).length > 0);
+    const actual = toArray(answer).map(v => String(v));
     if (expected.length !== actual.length) return false;
     for (let i = 0; i < expected.length; i++) {
       if (normalizeText(expected[i]) !== normalizeText(actual[i])) return false;
@@ -290,168 +287,90 @@ function buildDragDrop(question, answer, index) {
 
   const help = document.createElement('div');
   help.className = 'drag-help';
-  help.textContent = 'Move items from the Pool into Steps. Each Step accepts one item only. Move an item back to Pool to replace it.';
+  help.textContent = 'Drag each item. Drop on a "Drop here" row. Numbers show your current order.';
   wrap.appendChild(help);
 
-  const board = document.createElement('div');
-  board.className = 'drag-board';
-  wrap.appendChild(board);
+  const container = document.createElement('div');
+  container.className = 'drag-zone';
+  wrap.appendChild(container);
 
-  const options = question._displayOptions.map(v => String(v));
-  let steps = new Array(options.length).fill(null);
+  const initial = Array.isArray(answer) && answer.length ? answer.slice() : question._displayOptions.slice();
 
-  if (Array.isArray(answer) && answer.length === options.length) {
-    const normalizedOptions = new Set(options.map(normalizeText));
-    const used = new Set();
-    let valid = true;
-    answer.forEach((v, idx) => {
-      const text = String(v ?? '').trim();
-      if (!text) return;
-      const key = normalizeText(text);
-      if (!normalizedOptions.has(key) || used.has(key)) {
-        valid = false;
-        return;
-      }
-      used.add(key);
-      steps[idx] = text;
+  function renderOrderNumbers() {
+    const items = Array.from(container.querySelectorAll('.drag-item'));
+    items.forEach((item, idx) => {
+      const badge = item.querySelector('.drag-order');
+      if (badge) badge.textContent = String(idx + 1);
     });
-    if (!valid) {
-      steps = new Array(options.length).fill(null);
-    }
+
+    const slots = Array.from(container.querySelectorAll('.drop-slot'));
+    slots.forEach((slot, idx) => {
+      slot.textContent = `Drop here (position ${idx + 1})`;
+    });
   }
 
-  let draggingValue = null;
+  function commitOrder() {
+    const order = Array.from(container.querySelectorAll('.drag-item')).map(el => el.dataset.value);
+    renderOrderNumbers();
+    setAnswer(index, order);
+  }
 
-  function makeItem(text, orderNumber = null) {
+  function makeDropSlot() {
+    const slot = document.createElement('div');
+    slot.className = 'drop-slot';
+
+    slot.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      slot.classList.add('active');
+    });
+
+    slot.addEventListener('dragleave', () => slot.classList.remove('active'));
+
+    slot.addEventListener('drop', (e) => {
+      e.preventDefault();
+      slot.classList.remove('active');
+      const dragging = container.querySelector('.drag-item.dragging');
+      if (!dragging) return;
+
+      // Prevent invalid nesting errors by only reordering known siblings
+      if (dragging === slot || dragging.contains(slot) || slot.contains(dragging)) return;
+
+      container.insertBefore(dragging, slot.nextSibling);
+      commitOrder();
+    });
+
+    return slot;
+  }
+
+  function makeItem(text) {
     const item = document.createElement('div');
     item.className = 'drag-item';
     item.draggable = true;
     item.dataset.value = text;
-    if (orderNumber != null) {
-      item.innerHTML = `
-        <span class="drag-order">${orderNumber}</span>
-        <span class="drag-value">${text}</span>
-      `;
-    } else {
-      item.innerHTML = `<span class="drag-value">${text}</span>`;
-    }
+    item.innerHTML = `
+      <span class="drag-order">1</span>
+      <span class="drag-value">${text}</span>
+    `;
 
-    item.addEventListener('dragstart', (e) => {
-      item.classList.add('dragging');
-      draggingValue = text;
-      e.dataTransfer.effectAllowed = 'move';
-      e.dataTransfer.setData('text/plain', text);
-    });
+    item.addEventListener('dragstart', () => item.classList.add('dragging'));
     item.addEventListener('dragend', () => {
       item.classList.remove('dragging');
-      draggingValue = null;
+      commitOrder();
     });
 
     return item;
   }
 
-  const poolPanel = document.createElement('div');
-  poolPanel.className = 'drag-panel';
-  poolPanel.innerHTML = '<div class="drag-panel-title">Pool</div>';
-  const poolZone = document.createElement('div');
-  poolZone.className = 'pool-zone';
-  poolPanel.appendChild(poolZone);
-
-  const stepsPanel = document.createElement('div');
-  stepsPanel.className = 'drag-panel';
-  stepsPanel.innerHTML = '<div class="drag-panel-title">Steps</div>';
-  const stepsZone = document.createElement('div');
-  stepsZone.className = 'steps-zone';
-  stepsPanel.appendChild(stepsZone);
-
-  board.appendChild(poolPanel);
-  board.appendChild(stepsPanel);
-
-  function commitSteps() {
-    setAnswer(index, steps.slice());
-  }
-
-  function onDragOverActive(target, e) {
-    e.preventDefault();
-    e.dataTransfer.dropEffect = 'move';
-    target.classList.add('active');
-  }
-
-  function onDragLeaveInactive(target) {
-    target.classList.remove('active');
-  }
-
-  function buildPool() {
-    poolZone.innerHTML = '';
-    const assigned = new Set(steps.filter(Boolean).map(normalizeText));
-    options.forEach((opt) => {
-      if (!assigned.has(normalizeText(opt))) {
-        poolZone.appendChild(makeItem(opt));
-      }
-    });
-  }
-
-  function buildSteps() {
-    stepsZone.innerHTML = '';
-    steps.forEach((value, idx) => {
-      const slot = document.createElement('div');
-      slot.className = `step-slot${value ? ' filled' : ''}`;
-      slot.dataset.stepIndex = String(idx);
-      slot.innerHTML = `
-        <div class="step-label">Step ${idx + 1}</div>
-        <div class="step-drop-hint">${value ? 'Filled' : 'Drop item here'}</div>
-      `;
-
-      if (value) {
-        slot.appendChild(makeItem(value, idx + 1));
-      }
-
-      slot.addEventListener('dragover', (e) => {
-        if (value) return;
-        onDragOverActive(slot, e);
-      });
-      slot.addEventListener('dragleave', () => onDragLeaveInactive(slot));
-      slot.addEventListener('drop', (e) => {
-        e.preventDefault();
-        onDragLeaveInactive(slot);
-        if (value) return; // Step is full; must move current item to Pool first
-
-        const dropped = String(e.dataTransfer.getData('text/plain') || draggingValue || '').trim();
-        if (!dropped) return;
-        if (steps.some(v => normalizeText(v) === normalizeText(dropped))) return;
-
-        steps[idx] = dropped;
-        commitSteps();
-        renderBoard();
-      });
-
-      stepsZone.appendChild(slot);
-    });
-  }
-
-  poolZone.addEventListener('dragover', (e) => onDragOverActive(poolZone, e));
-  poolZone.addEventListener('dragleave', () => onDragLeaveInactive(poolZone));
-  poolZone.addEventListener('drop', (e) => {
-    e.preventDefault();
-    onDragLeaveInactive(poolZone);
-    const dropped = String(e.dataTransfer.getData('text/plain') || draggingValue || '').trim();
-    if (!dropped) return;
-
-    const stepIndex = steps.findIndex(v => normalizeText(v) === normalizeText(dropped));
-    if (stepIndex >= 0) {
-      steps[stepIndex] = null;
-      commitSteps();
-      renderBoard();
-    }
+  initial.forEach((value) => {
+    container.appendChild(makeDropSlot());
+    container.appendChild(makeItem(String(value)));
   });
+  container.appendChild(makeDropSlot());
+  renderOrderNumbers();
+  setAnswer(index, initial);
 
-  function renderBoard() {
-    buildPool();
-    buildSteps();
-  }
+  container.addEventListener('dragover', e => e.preventDefault());
 
-  renderBoard();
-  commitSteps();
   return wrap;
 }
 

@@ -70,7 +70,11 @@ const ui = {
   app: document.getElementById('app'),
   timer: document.getElementById('timer'),
   progress: document.getElementById('progress'),
-  themeBtn: document.getElementById('themeBtn')
+  themeBtn: document.getElementById('themeBtn'),
+  resultModalBackdrop: document.getElementById('resultModalBackdrop'),
+  resultModalTitle: document.getElementById('resultModalTitle'),
+  resultModalBody: document.getElementById('resultModalBody'),
+  resultModalCloseBtn: document.getElementById('resultModalCloseBtn')
 };
 
 let state = {
@@ -82,10 +86,12 @@ let state = {
   secondsLeft: EXAM_SECONDS,
   startedAt: Date.now(),
   score: null,
-  details: []
+  details: [],
+  resultSelection: 0
 };
 
 let timerHandle = null;
+let previousFocus = null;
 
 // ============================
 // Persistence / Theme
@@ -150,11 +156,44 @@ function initializeExam() {
     secondsLeft: EXAM_SECONDS,
     startedAt: Date.now(),
     score: null,
-    details: []
+    details: [],
+    resultSelection: 0
   };
 
   saveState();
 }
+
+function closeResultModal() {
+  ui.resultModalBackdrop.hidden = true;
+  if (previousFocus && typeof previousFocus.focus === 'function') previousFocus.focus();
+}
+
+function openResultModal(questionIndex) {
+  const q = state.questions[questionIndex];
+  const user = state.answers[questionIndex];
+  const correct = getCorrectField(q);
+  const ok = Boolean(state.details[questionIndex]?.ok);
+
+  ui.resultModalTitle.textContent = `Result Details — Question ${questionIndex + 1}`;
+  ui.resultModalBody.innerHTML = `
+    <p><strong>Question:</strong> ${String(q.question ?? q.q ?? '')}</p>
+    <p><strong>Your answer:</strong> <code>${JSON.stringify(user)}</code></p>
+    <p><strong>Correct answer:</strong> <code>${JSON.stringify(correct)}</code></p>
+    <p><strong>Result:</strong> <span style="color:${ok ? 'var(--success)' : 'var(--danger)'}">${ok ? 'Correct' : 'Incorrect'}</span></p>
+  `;
+
+  previousFocus = document.activeElement;
+  ui.resultModalBackdrop.hidden = false;
+  ui.resultModalCloseBtn.focus();
+}
+
+ui.resultModalCloseBtn.addEventListener('click', closeResultModal);
+ui.resultModalBackdrop.addEventListener('click', (e) => {
+  if (e.target === ui.resultModalBackdrop) closeResultModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && !ui.resultModalBackdrop.hidden) closeResultModal();
+});
 
 function setAnswer(index, value) {
   if (JSON.stringify(state.answers[index]) === JSON.stringify(value)) return;
@@ -580,12 +619,13 @@ function renderResult(timeout) {
     const ok = state.details[i]?.ok;
     const btn = document.createElement('button');
     btn.className = 'qbtn';
+    if (i === state.resultSelection) btn.classList.add('result-selected');
     btn.style.borderColor = ok ? 'var(--success)' : 'var(--danger)';
     btn.textContent = `${i + 1}${ok ? ' ✓' : ' ✗'}`;
     btn.addEventListener('click', () => {
-      const user = state.answers[i];
-      const correct = getCorrectField(q);
-      alert(`Q${i + 1}\n\n${String(q.question ?? q.q ?? '')}\n\nYour answer: ${JSON.stringify(user)}\nCorrect answer: ${JSON.stringify(correct)}\nResult: ${ok ? 'Correct' : 'Incorrect'}`);
+      state.resultSelection = i;
+      saveState();
+      render();
     });
     nav.appendChild(btn);
   });
@@ -593,11 +633,20 @@ function renderResult(timeout) {
 
   const controls = document.createElement('div');
   controls.className = 'controls';
-  controls.innerHTML = '<div class="left"><button id="restartBtn" class="primary">Start New Attempt</button></div>';
+  controls.innerHTML = `
+    <div class="left">
+      <button id="showResultBtn" ${state.details.length ? '' : 'disabled'}>Show Results</button>
+      <button id="restartBtn" class="primary">Start New Attempt</button>
+    </div>
+  `;
   root.appendChild(controls);
 
   ui.app.innerHTML = '';
   ui.app.appendChild(root);
+
+  document.getElementById('showResultBtn').addEventListener('click', () => {
+    openResultModal(state.resultSelection);
+  });
 
   document.getElementById('restartBtn').addEventListener('click', () => {
     clearSavedState();
@@ -609,6 +658,7 @@ function renderResult(timeout) {
 
 function submitExam(timeout) {
   const outcome = scoreExam();
+  const firstIncorrect = outcome.details.findIndex(d => !d.ok);
   state.phase = 'result';
   state.score = {
     correctCount: outcome.correctCount,
@@ -617,6 +667,7 @@ function submitExam(timeout) {
     passed: outcome.passed
   };
   state.details = outcome.details;
+  state.resultSelection = firstIncorrect >= 0 ? firstIncorrect : 0;
 
   if (timerHandle) {
     clearInterval(timerHandle);

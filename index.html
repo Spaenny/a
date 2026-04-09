@@ -86,6 +86,7 @@
     .qbtn.answered { border-color: var(--success); }
     .qbtn.flagged { outline: 2px solid var(--flag); }
     .qbtn.current { border-color: var(--primary); background: var(--primary-soft); }
+    .qbtn.result-selected { outline: 2px solid var(--primary); }
 
     .drag-help { margin-top: 8px; color: var(--muted); font-size: 13px; }
     .drag-board {
@@ -137,6 +138,37 @@
     .step-label { font-size: 12px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
     .step-drop-hint { font-size: 12px; color: var(--muted); }
 
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 999;
+    }
+    .modal-backdrop[hidden] { display: none; }
+    .modal {
+      width: min(640px, 100%);
+      max-height: 85vh;
+      overflow: auto;
+      background: var(--panel);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.2);
+      animation: modalIn .14s ease-out;
+    }
+    .modal-header, .modal-footer { padding: 12px 14px; border-bottom: 1px solid var(--border); }
+    .modal-footer { border-bottom: 0; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; }
+    .modal-body { padding: 14px; line-height: 1.45; }
+    .modal-title { margin: 0; font-size: 18px; }
+    @keyframes modalIn {
+      from { transform: translateY(6px); opacity: .88; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
     @media (max-width: 680px) {
       button { width: 100%; }
       .controls { flex-direction: column; }
@@ -158,6 +190,18 @@
       </div>
     </div>
     <main id="app" class="card"></main>
+  </div>
+
+  <div id="resultModalBackdrop" class="modal-backdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="resultModalTitle">
+      <div class="modal-header">
+        <h3 id="resultModalTitle" class="modal-title">Result Details</h3>
+      </div>
+      <div id="resultModalBody" class="modal-body"></div>
+      <div class="modal-footer">
+        <button id="resultModalCloseBtn" type="button" class="primary">Close</button>
+      </div>
+    </div>
   </div>
 
   <script src="pool.js"></script>

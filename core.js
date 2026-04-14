@@ -1,6 +1,16 @@
 'use strict';
 
 (function attachExamCore(globalObj) {
+  const TYPE_ALIASES = {
+    single: ['single', 'single-choice', 'radio'],
+    multiple: ['multiple', 'multi', 'multiple-choice', 'checkbox'],
+    fill: ['fill', 'fill-in', 'text', 'input'],
+    lab: ['lab', 'short-answer', 'api'],
+    dragdrop: ['dragdrop', 'drag', 'drag-and-drop', 'order', 'ordering']
+  };
+
+  const ORDERED_TYPES = ['single', 'multiple', 'fill', 'lab', 'dragdrop'];
+
   function normalizeText(value) {
     return String(value ?? '').trim().toLowerCase();
   }
@@ -28,12 +38,9 @@
 
   function inferType(question) {
     const type = normalizeText(question.type);
-
-    if (['single', 'single-choice', 'radio'].includes(type)) return 'single';
-    if (['multiple', 'multi', 'multiple-choice', 'checkbox'].includes(type)) return 'multiple';
-    if (['fill', 'fill-in', 'text', 'input'].includes(type)) return 'fill';
-    if (['lab', 'short-answer', 'api'].includes(type)) return 'lab';
-    if (['dragdrop', 'drag', 'drag-and-drop', 'order', 'ordering'].includes(type)) return 'dragdrop';
+    for (const canonicalType of ORDERED_TYPES) {
+      if (TYPE_ALIASES[canonicalType].includes(type)) return canonicalType;
+    }
 
     const correct = getCorrectField(question);
     if (Array.isArray(correct) && Array.isArray(question.options)) return 'multiple';
@@ -45,32 +52,29 @@
     const correct = getCorrectField(question);
     const type = question._type;
 
-    if (type === 'single') {
-      return normalizeText(answer) === normalizeText(correct);
-    }
-
-    if (type === 'multiple') {
-      return compareArraysInsensitiveSorted(answer, correct);
-    }
-
-    if (type === 'fill' || type === 'lab') {
-      if (Array.isArray(correct)) {
-        return correct.map(normalizeText).includes(normalizeText(answer));
+    switch (type) {
+      case 'single':
+        return normalizeText(answer) === normalizeText(correct);
+      case 'multiple':
+        return compareArraysInsensitiveSorted(answer, correct);
+      case 'fill':
+      case 'lab':
+        if (Array.isArray(correct)) {
+          return correct.map(normalizeText).includes(normalizeText(answer));
+        }
+        return normalizeText(answer) === normalizeText(correct);
+      case 'dragdrop': {
+        const expected = toArray(correct).map(v => String(v));
+        const actual = toArray(answer).map(v => String(v)).filter(v => normalizeText(v).length > 0);
+        if (expected.length !== actual.length) return false;
+        for (let i = 0; i < expected.length; i += 1) {
+          if (normalizeText(expected[i]) !== normalizeText(actual[i])) return false;
+        }
+        return true;
       }
-      return normalizeText(answer) === normalizeText(correct);
+      default:
+        return false;
     }
-
-    if (type === 'dragdrop') {
-      const expected = toArray(correct).map(v => String(v));
-      const actual = toArray(answer).map(v => String(v)).filter(v => normalizeText(v).length > 0);
-      if (expected.length !== actual.length) return false;
-      for (let i = 0; i < expected.length; i += 1) {
-        if (normalizeText(expected[i]) !== normalizeText(actual[i])) return false;
-      }
-      return true;
-    }
-
-    return false;
   }
 
   function scoreExam({ questions, answers, questionCount, scoreMin, scoreMax, passScore }) {

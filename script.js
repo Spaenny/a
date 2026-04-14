@@ -41,10 +41,15 @@ function mmss(seconds) {
   return `${m}:${sec}`;
 }
 
+function getQuestionText(question) {
+  return String(question.question ?? question.q ?? 'Untitled question');
+}
+
+function getQuestionPrompt(question) {
+  return question.prompt ? String(question.prompt) : '';
+}
+
 function nonEmpty(answer) {
-  if (answer && typeof answer === 'object' && !Array.isArray(answer) && Array.isArray(answer.steps)) {
-    return answer.steps.some(v => String(v ?? '').trim().length > 0);
-  }
   if (Array.isArray(answer)) return answer.length > 0;
   return String(answer ?? '').trim().length > 0;
 }
@@ -77,21 +82,25 @@ const ui = {
   resultModalCloseBtn: document.getElementById('resultModalCloseBtn')
 };
 
-let state = {
-  phase: 'exam', // exam | review | result
-  questions: [],
-  currentIndex: 0,
-  answers: [],
-  flagged: [],
-  secondsLeft: EXAM_SECONDS,
-  startedAt: Date.now(),
-  score: null,
-  details: [],
-  resultSelection: 0
-};
+let state = createDefaultState([]);
 
 let timerHandle = null;
 let previousFocus = null;
+
+function createDefaultState(questions = []) {
+  return {
+    phase: 'exam',
+    questions,
+    currentIndex: 0,
+    answers: Array(EXAM_QUESTION_COUNT).fill(null),
+    flagged: Array(EXAM_QUESTION_COUNT).fill(false),
+    secondsLeft: EXAM_SECONDS,
+    startedAt: Date.now(),
+    score: null,
+    details: [],
+    resultSelection: 0
+  };
+}
 
 // ============================
 // Persistence / Theme
@@ -143,7 +152,7 @@ function initializeExam() {
 
   for (const item of shuffledPool) {
     if (picked.length >= EXAM_QUESTION_COUNT) break;
-    const key = normalizeText(`${item.question ?? item.q ?? ''}|${item.prompt ?? ''}`);
+    const key = normalizeText(`${getQuestionText(item)}|${getQuestionPrompt(item)}`);
     if (seenQuestionKeys.has(key)) continue;
     seenQuestionKeys.add(key);
     picked.push(item);
@@ -166,18 +175,7 @@ function initializeExam() {
     return item;
   });
 
-  state = {
-    phase: 'exam',
-    questions: prepared,
-    currentIndex: 0,
-    answers: Array(EXAM_QUESTION_COUNT).fill(null),
-    flagged: Array(EXAM_QUESTION_COUNT).fill(false),
-    secondsLeft: EXAM_SECONDS,
-    startedAt: Date.now(),
-    score: null,
-    details: [],
-    resultSelection: 0
-  };
+  state = createDefaultState(prepared);
 
   saveState();
 }
@@ -195,7 +193,7 @@ function openResultModal(questionIndex) {
 
   ui.resultModalTitle.textContent = `Result Details — Question ${questionIndex + 1}`;
   ui.resultModalBody.innerHTML = `
-    <p><strong>Question:</strong> ${String(q.question ?? q.q ?? '')}</p>
+    <p><strong>Question:</strong> ${getQuestionText(q)}</p>
     <p><strong>Your answer:</strong> <code>${JSON.stringify(user)}</code></p>
     <p><strong>Correct answer:</strong> <code>${JSON.stringify(correct)}</code></p>
     <p><strong>Result:</strong> <span style="color:${ok ? 'var(--success)' : 'var(--danger)'}">${ok ? 'Correct' : 'Incorrect'}</span></p>
@@ -463,6 +461,7 @@ function renderExam() {
   const i = state.currentIndex;
   const q = state.questions[i];
   const answer = state.answers[i];
+  const prompt = getQuestionPrompt(q);
 
   ui.progress.textContent = `Question ${i + 1} / ${EXAM_QUESTION_COUNT}`;
   ui.timer.textContent = mmss(state.secondsLeft);
@@ -473,8 +472,8 @@ function renderExam() {
       <span class="pill">${q._type.toUpperCase()}</span>
       <span class="pill">${state.flagged[i] ? '🚩 Flagged' : 'Not Flagged'}</span>
     </div>
-    <h3 class="question">${String(q.question ?? q.q ?? 'Untitled question')}</h3>
-    ${q.prompt ? `<div class="muted">${String(q.prompt)}</div>` : ''}
+    <h3 class="question">${getQuestionText(q)}</h3>
+    ${prompt ? `<div class="muted">${prompt}</div>` : ''}
   `;
 
   const body = document.createElement('div');

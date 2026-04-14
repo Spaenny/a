@@ -907,7 +907,7 @@ window.pool = [
     "id": "ENAUTO-069",
     "type": "lab",
     "question": "[state validation] Determine the final device/service state from the JSON/API output below.",
-    "prompt": "JSON/API output:\n{\n  \"service\": \"state validation\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"unreachable\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field. Scenario reference: ENAUTO-069.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"state validation\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"unreachable\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "c": [
       "unreachable",
       "UNREACHABLE"
@@ -930,6 +930,7 @@ window.pool = [
       "Merge to main"
     ],
     "prompt": "Scenario: rollback strategy change automation. Order the listed steps from FIRST executed action to FINAL action. Use each step exactly once. Scenario reference: ENAUTO-070."
+    ]
   },
   {
     "id": "ENAUTO-071",
@@ -975,7 +976,7 @@ window.pool = [
     "id": "ENAUTO-074",
     "type": "lab",
     "question": "[BGP neighbor checks] Determine the final device/service state from the JSON/API output below.",
-    "prompt": "JSON/API output:\n{\n  \"service\": \"BGP neighbor checks\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"active\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field. Scenario reference: ENAUTO-074.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"BGP neighbor checks\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"active\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "active"
   },
   {
@@ -995,6 +996,7 @@ window.pool = [
       "Trigger webhook"
     ],
     "prompt": "Scenario: OSPF health checks change automation. Order the listed steps from FIRST executed action to FINAL action. Use each step exactly once. Scenario reference: ENAUTO-075."
+    ]
   },
   {
     "id": "ENAUTO-076",
@@ -1023,8 +1025,7 @@ window.pool = [
     "c": [
       "OAuth2 bearer tokens",
       "API keys"
-    ],
-    "prompt": "Select all correct answers as indicated by the question. Scenario reference: ENAUTO-077."
+    ]
   },
   {
     "id": "ENAUTO-078",
@@ -1034,6 +1035,11 @@ window.pool = [
     "correct": [
       "get",
       "GET"
+    "question": "[AAA configuration] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
+    "correct": [
+      "json",
+      "JSON"
     ]
   },
   {
@@ -1061,8 +1067,7 @@ window.pool = [
       "Render intended config",
       "Run dry validation",
       "Deploy change"
-    ],
-    "prompt": "Scenario: webhook triggers change automation. Order the listed steps from FIRST executed action to FINAL action. Use each step exactly once. Scenario reference: ENAUTO-080."
+    ]
   },
   {
     "id": "ENAUTO-081",
@@ -1076,6 +1081,7 @@ window.pool = [
     ],
     "c": "NETCONF",
     "prompt": "Select one best answer. Scenario reference: ENAUTO-081."
+    "c": "NETCONF"
   },
   {
     "id": "ENAUTO-082",
@@ -1097,18 +1103,16 @@ window.pool = [
   {
     "id": "ENAUTO-083",
     "type": "fill",
-    "question": "[YANG models] API scenario: You need to retrieve current interface statistics from /api/v1/interfaces/GigabitEthernet1/1/statistics without modifying anything. Which HTTP method should you use?",
-    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method. Scenario reference: ENAUTO-083.",
-    "c": [
-      "get",
-      "GET"
-    ]
+    "question": "[YANG models] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
+    "c": "yaml"
   },
   {
     "id": "ENAUTO-084",
     "type": "lab",
     "question": "[Cisco DNA Center] Determine the final device/service state from the JSON/API output below.",
     "prompt": "JSON/API output:\n{\n  \"service\": \"Cisco DNA Center\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"up\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field. Scenario reference: ENAUTO-084.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"Cisco DNA Center\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"up\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "up"
   },
   {
@@ -1139,8 +1143,7 @@ window.pool = [
       "TFTP",
       "Syslog"
     ],
-    "correct": "NETCONF",
-    "prompt": "Select one best answer. Scenario reference: ENAUTO-086."
+    "correct": "NETCONF"
   },
   {
     "id": "ENAUTO-087",
@@ -1158,6 +1161,7 @@ window.pool = [
       "API keys"
     ],
     "prompt": "Select all correct answers as indicated by the question. Scenario reference: ENAUTO-087."
+    ]
   },
   {
     "id": "ENAUTO-088",
@@ -1173,7 +1177,7 @@ window.pool = [
     "id": "ENAUTO-089",
     "type": "lab",
     "question": "[Jinja2 templates] Determine the final device/service state from the JSON/API output below.",
-    "prompt": "JSON/API output:\n{\n  \"service\": \"Jinja2 templates\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"down\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field. Scenario reference: ENAUTO-089.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"Jinja2 templates\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"down\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "c": [
       "down",
       "DOWN"
@@ -1196,6 +1200,7 @@ window.pool = [
       "Verify post-checks"
     ],
     "prompt": "Scenario: Ansible playbooks change automation. Order the listed steps from FIRST executed action to FINAL action. Use each step exactly once. Scenario reference: ENAUTO-090."
+    ]
   },
   {
     "id": "ENAUTO-091",
@@ -1224,8 +1229,7 @@ window.pool = [
     "correct": [
       "OAuth2 bearer tokens",
       "API keys"
-    ],
-    "prompt": "Select all correct answers as indicated by the question. Scenario reference: ENAUTO-092."
+    ]
   },
   {
     "id": "ENAUTO-093",
@@ -1236,6 +1240,9 @@ window.pool = [
       "get",
       "GET"
     ]
+    "question": "[OAuth2 tokens] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
+    "c": "timeout"
   },
   {
     "id": "ENAUTO-094",
@@ -1259,8 +1266,7 @@ window.pool = [
       "Commit automation change",
       "Run CI tests",
       "Merge to main"
-    ],
-    "prompt": "Scenario: JSON parsing change automation. Order the listed steps from FIRST executed action to FINAL action. Use each step exactly once. Scenario reference: ENAUTO-095."
+    ]
   },
   {
     "id": "ENAUTO-096",
@@ -1274,6 +1280,7 @@ window.pool = [
     ],
     "correct": "NETCONF",
     "prompt": "Select one best answer. Scenario reference: ENAUTO-096."
+    "correct": "NETCONF"
   },
   {
     "id": "ENAUTO-097",
@@ -1295,11 +1302,11 @@ window.pool = [
   {
     "id": "ENAUTO-098",
     "type": "fill",
-    "question": "[SNMP telemetry] API scenario: You need to retrieve current interface statistics from /api/v1/interfaces/GigabitEthernet1/1/statistics without modifying anything. Which HTTP method should you use?",
+    "question": "[SNMP telemetry] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
     "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "correct": [
-      "get",
-      "GET"
+      "retry",
+      "RETRY"
     ]
   },
   {
@@ -1327,8 +1334,7 @@ window.pool = [
       "Ingest stream",
       "Evaluate threshold",
       "Trigger webhook"
-    ],
-    "prompt": "Scenario: model-driven telemetry change automation. Order the listed steps from FIRST executed action to FINAL action. Use each step exactly once. Scenario reference: ENAUTO-100."
+    ]
   },
   {
     "id": "ENAUTO-101",
@@ -1342,6 +1348,7 @@ window.pool = [
     ],
     "c": "NETCONF",
     "prompt": "Select one best answer. Scenario reference: ENAUTO-101."
+    "c": "NETCONF"
   },
   {
     "id": "ENAUTO-102",
@@ -1363,18 +1370,16 @@ window.pool = [
   {
     "id": "ENAUTO-103",
     "type": "fill",
-    "question": "[on-box Python] API scenario: You need to retrieve current interface statistics from /api/v1/interfaces/GigabitEthernet1/1/statistics without modifying anything. Which HTTP method should you use?",
+    "question": "[on-box Python] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
     "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
-    "c": [
-      "get",
-      "GET"
-    ]
+    "c": "get"
   },
   {
     "id": "ENAUTO-104",
     "type": "lab",
     "question": "[pyATS] Determine the final device/service state from the JSON/API output below.",
     "prompt": "JSON/API output:\n{\n  \"service\": \"pyATS\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"reachable\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field. Scenario reference: ENAUTO-104.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"pyATS\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"reachable\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "reachable"
   },
   {
@@ -1422,13 +1427,13 @@ window.pool = [
     "c": [
       "OAuth2 bearer tokens",
       "API keys"
-    ],
-    "prompt": "Select all correct answers as indicated by the question. Scenario reference: ENAUTO-107."
+    ]
   },
   {
     "id": "ENAUTO-108",
     "type": "fill",
     "question": "[idempotency] API scenario: You need to create a new telemetry subscription by sending JSON to /api/v1/subscriptions. Which HTTP method should you use?",
+    "question": "[idempotency] API scenario: You are creating a new automation job by sending a JSON body to /api/v1/jobs on the controller. Which HTTP method should you use?",
     "prompt": "Context: create a brand-new resource on the server. Answer with one lowercase HTTP method.",
     "correct": [
       "post",
@@ -1473,8 +1478,7 @@ window.pool = [
       "TFTP",
       "Syslog"
     ],
-    "c": "NETCONF",
-    "prompt": "Select one best answer. Scenario reference: ENAUTO-111."
+    "c": "NETCONF"
   },
   {
     "id": "ENAUTO-112",
@@ -1492,6 +1496,7 @@ window.pool = [
       "API keys"
     ],
     "prompt": "Select all correct answers as indicated by the question. Scenario reference: ENAUTO-112."
+    ]
   },
   {
     "id": "ENAUTO-113",
@@ -1507,7 +1512,7 @@ window.pool = [
     "id": "ENAUTO-114",
     "type": "lab",
     "question": "[BGP neighbor checks] Determine the final device/service state from the JSON/API output below.",
-    "prompt": "JSON/API output:\n{\n  \"service\": \"BGP neighbor checks\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"active\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field. Scenario reference: ENAUTO-114.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"BGP neighbor checks\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"active\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "active"
   },
   {
@@ -1538,8 +1543,7 @@ window.pool = [
       "TFTP",
       "Syslog"
     ],
-    "correct": "NETCONF",
-    "prompt": "Select one best answer. Scenario reference: ENAUTO-116."
+    "correct": "NETCONF"
   },
   {
     "id": "ENAUTO-117",
@@ -1561,7 +1565,7 @@ window.pool = [
   {
     "id": "ENAUTO-118",
     "type": "fill",
-    "question": "[AAA configuration] API scenario: You only need to change the description field on /api/v1/interfaces/GigabitEthernet1/2. Which HTTP method should you use?",
+    "question": "[AAA configuration] API scenario: You need to change only the description field of interface GigabitEthernet1/3 at /api/v1/interfaces/GigabitEthernet1/3. Which HTTP method should you use?",
     "prompt": "Context: partial update of an existing resource. Answer with one lowercase HTTP method.",
     "correct": [
       "patch",
@@ -1606,8 +1610,7 @@ window.pool = [
       "TFTP",
       "Syslog"
     ],
-    "c": "NETCONF",
-    "prompt": "Select one best answer. Scenario reference: ENAUTO-121."
+    "c": "NETCONF"
   },
   {
     "id": "ENAUTO-122",
@@ -1629,12 +1632,9 @@ window.pool = [
   {
     "id": "ENAUTO-123",
     "type": "fill",
-    "question": "[YANG models] API scenario: You need to remove stale subscription sub-ENAUTO-123 at /api/v1/subscriptions/sub-ENAUTO-123. Which HTTP method should you use?",
+    "question": "[YANG models] API scenario: You need to remove obsolete webhook subscription sub-2123 from /api/v1/subscriptions/sub-2123. Which HTTP method should you use?",
     "prompt": "Context: delete/remove an existing resource. Answer with one lowercase HTTP method.",
-    "c": [
-      "delete",
-      "DELETE"
-    ]
+    "c": "delete"
   },
   {
     "id": "ENAUTO-124",
@@ -1694,11 +1694,11 @@ window.pool = [
   {
     "id": "ENAUTO-128",
     "type": "fill",
-    "question": "[Python requests] API scenario: You need to retrieve current interface statistics from /api/v1/interfaces/GigabitEthernet1/1/statistics without modifying anything. Which HTTP method should you use?",
-    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method. Scenario reference: ENAUTO-128.",
+    "question": "[Python requests] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "correct": [
-      "get",
-      "GET"
+      "json",
+      "JSON"
     ]
   },
   {
@@ -1756,8 +1756,7 @@ window.pool = [
     "correct": [
       "OAuth2 bearer tokens",
       "API keys"
-    ],
-    "prompt": "Select all correct answers as indicated by the question. Scenario reference: ENAUTO-132."
+    ]
   },
   {
     "id": "ENAUTO-133",
@@ -1773,7 +1772,7 @@ window.pool = [
     "id": "ENAUTO-134",
     "type": "lab",
     "question": "[API rate limiting] Determine the final device/service state from the JSON/API output below.",
-    "prompt": "JSON/API output:\n{\n  \"service\": \"API rate limiting\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"success\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field. Scenario reference: ENAUTO-134.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"API rate limiting\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"success\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "success"
   },
   {
@@ -1804,8 +1803,7 @@ window.pool = [
       "TFTP",
       "Syslog"
     ],
-    "correct": "NETCONF",
-    "prompt": "Select one best answer. Scenario reference: ENAUTO-136."
+    "correct": "NETCONF"
   },
   {
     "id": "ENAUTO-137",
@@ -1827,11 +1825,11 @@ window.pool = [
   {
     "id": "ENAUTO-138",
     "type": "fill",
-    "question": "[SNMP telemetry] API scenario: You need to retrieve current interface statistics from /api/v1/interfaces/GigabitEthernet1/1/statistics without modifying anything. Which HTTP method should you use?",
-    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method. Scenario reference: ENAUTO-138.",
+    "question": "[SNMP telemetry] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "correct": [
-      "get",
-      "GET"
+      "token",
+      "TOKEN"
     ]
   },
   {
@@ -1859,8 +1857,7 @@ window.pool = [
       "Filter target devices",
       "Execute playbook",
       "Verify post-checks"
-    ],
-    "prompt": "Scenario: model-driven telemetry change automation. Order the listed steps from FIRST executed action to FINAL action. Use each step exactly once. Scenario reference: ENAUTO-140."
+    ]
   },
   {
     "id": "ENAUTO-141",
@@ -1895,12 +1892,9 @@ window.pool = [
   {
     "id": "ENAUTO-143",
     "type": "fill",
-    "question": "[on-box Python] API scenario: You need to retrieve current interface statistics from /api/v1/interfaces/GigabitEthernet1/1/statistics without modifying anything. Which HTTP method should you use?",
-    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method. Scenario reference: ENAUTO-143.",
-    "c": [
-      "get",
-      "GET"
-    ]
+    "question": "[on-box Python] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
+    "c": "timeout"
   },
   {
     "id": "ENAUTO-144",
@@ -1937,8 +1931,7 @@ window.pool = [
       "TFTP",
       "Syslog"
     ],
-    "correct": "NETCONF",
-    "prompt": "Select one best answer. Scenario reference: ENAUTO-146."
+    "correct": "NETCONF"
   },
   {
     "id": "ENAUTO-147",
@@ -1960,11 +1953,11 @@ window.pool = [
   {
     "id": "ENAUTO-148",
     "type": "fill",
-    "question": "[idempotency] API scenario: You need to retrieve current interface statistics from /api/v1/interfaces/GigabitEthernet1/1/statistics without modifying anything. Which HTTP method should you use?",
-    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method. Scenario reference: ENAUTO-148.",
+    "question": "[idempotency] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "correct": [
-      "get",
-      "GET"
+      "retry",
+      "RETRY"
     ]
   },
   {
@@ -2005,8 +1998,7 @@ window.pool = [
       "TFTP",
       "Syslog"
     ],
-    "c": "NETCONF",
-    "prompt": "Select one best answer. Scenario reference: ENAUTO-151."
+    "c": "NETCONF"
   },
   {
     "id": "ENAUTO-152",
@@ -2039,7 +2031,7 @@ window.pool = [
     "id": "ENAUTO-154",
     "type": "lab",
     "question": "[BGP neighbor checks] Determine the final device/service state from the JSON/API output below.",
-    "prompt": "JSON/API output:\n{\n  \"service\": \"BGP neighbor checks\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"active\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field. Scenario reference: ENAUTO-154.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"BGP neighbor checks\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"active\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "active"
   },
   {
@@ -2104,7 +2096,7 @@ window.pool = [
     "id": "ENAUTO-159",
     "type": "lab",
     "question": "[Syslog pipelines] Determine the final device/service state from the JSON/API output below.",
-    "prompt": "JSON/API output:\n{\n  \"service\": \"Syslog pipelines\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"standby\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field. Scenario reference: ENAUTO-159.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"Syslog pipelines\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"standby\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "c": [
       "standby",
       "STANDBY"
@@ -2161,12 +2153,9 @@ window.pool = [
   {
     "id": "ENAUTO-163",
     "type": "fill",
-    "question": "[YANG models] API scenario: You must fully replace policy object policy-ENAUTO-163 at /api/v1/policies/policy-ENAUTO-163 with a complete payload. Which HTTP method should you use?",
+    "question": "[YANG models] API scenario: You must fully replace VLAN policy object 263 at /api/v1/policies/263 with a complete payload. Which HTTP method should you use?",
     "prompt": "Context: full replacement of an existing resource representation. Answer with one lowercase HTTP method.",
-    "c": [
-      "put",
-      "PUT"
-    ]
+    "c": "put"
   },
   {
     "id": "ENAUTO-164",
@@ -2190,8 +2179,7 @@ window.pool = [
       "Filter target devices",
       "Execute playbook",
       "Verify post-checks"
-    ],
-    "prompt": "Scenario: Cisco NSO change automation. Order the listed steps from FIRST executed action to FINAL action. Use each step exactly once. Scenario reference: ENAUTO-165."
+    ]
   },
   {
     "id": "ENAUTO-166",
@@ -2205,6 +2193,7 @@ window.pool = [
     ],
     "correct": "NETCONF",
     "prompt": "Select one best answer. Scenario reference: ENAUTO-166."
+    "correct": "NETCONF"
   },
   {
     "id": "ENAUTO-167",
@@ -2237,7 +2226,7 @@ window.pool = [
     "id": "ENAUTO-169",
     "type": "lab",
     "question": "[Jinja2 templates] Determine the final device/service state from the JSON/API output below.",
-    "prompt": "JSON/API output:\n{\n  \"service\": \"Jinja2 templates\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"down\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field. Scenario reference: ENAUTO-169.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"Jinja2 templates\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"down\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "c": [
       "down",
       "DOWN"
@@ -2260,6 +2249,7 @@ window.pool = [
       "Merge to main"
     ],
     "prompt": "Scenario: Ansible playbooks change automation. Order the listed steps from FIRST executed action to FINAL action. Use each step exactly once. Scenario reference: ENAUTO-170."
+    ]
   },
   {
     "id": "ENAUTO-171",
@@ -2271,8 +2261,7 @@ window.pool = [
       "TFTP",
       "Syslog"
     ],
-    "c": "NETCONF",
-    "prompt": "Select one best answer. Scenario reference: ENAUTO-171."
+    "c": "NETCONF"
   },
   {
     "id": "ENAUTO-172",
@@ -2294,18 +2283,16 @@ window.pool = [
   {
     "id": "ENAUTO-173",
     "type": "fill",
-    "question": "[OAuth2 tokens] API scenario: You need to remove stale subscription sub-ENAUTO-173 at /api/v1/subscriptions/sub-ENAUTO-173. Which HTTP method should you use?",
+    "question": "[OAuth2 tokens] API scenario: You need to remove obsolete webhook subscription sub-2173 from /api/v1/subscriptions/sub-2173. Which HTTP method should you use?",
     "prompt": "Context: delete/remove an existing resource. Answer with one lowercase HTTP method.",
-    "c": [
-      "delete",
-      "DELETE"
-    ]
+    "c": "delete"
   },
   {
     "id": "ENAUTO-174",
     "type": "lab",
     "question": "[API rate limiting] Determine the final device/service state from the JSON/API output below.",
     "prompt": "JSON/API output:\n{\n  \"service\": \"API rate limiting\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"success\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field. Scenario reference: ENAUTO-174.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"API rate limiting\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"success\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "success"
   },
   {
@@ -2353,8 +2340,7 @@ window.pool = [
     "c": [
       "OAuth2 bearer tokens",
       "API keys"
-    ],
-    "prompt": "Select all correct answers as indicated by the question. Scenario reference: ENAUTO-177."
+    ]
   },
   {
     "id": "ENAUTO-178",
@@ -2364,6 +2350,11 @@ window.pool = [
     "correct": [
       "get",
       "GET"
+    "question": "[SNMP telemetry] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
+    "correct": [
+      "json",
+      "JSON"
     ]
   },
   {
@@ -2404,8 +2395,7 @@ window.pool = [
       "TFTP",
       "Syslog"
     ],
-    "c": "NETCONF",
-    "prompt": "Select one best answer. Scenario reference: ENAUTO-181."
+    "c": "NETCONF"
   },
   {
     "id": "ENAUTO-182",
@@ -2427,18 +2417,16 @@ window.pool = [
   {
     "id": "ENAUTO-183",
     "type": "fill",
-    "question": "[on-box Python] API scenario: You need to retrieve current interface statistics from /api/v1/interfaces/GigabitEthernet1/1/statistics without modifying anything. Which HTTP method should you use?",
-    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method. Scenario reference: ENAUTO-183.",
-    "c": [
-      "get",
-      "GET"
-    ]
+    "question": "[on-box Python] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
+    "c": "yaml"
   },
   {
     "id": "ENAUTO-184",
     "type": "lab",
     "question": "[pyATS] Determine the final device/service state from the JSON/API output below.",
     "prompt": "JSON/API output:\n{\n  \"service\": \"pyATS\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"reachable\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field. Scenario reference: ENAUTO-184.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"pyATS\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"reachable\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "reachable"
   },
   {
@@ -2492,11 +2480,11 @@ window.pool = [
   {
     "id": "ENAUTO-188",
     "type": "fill",
-    "question": "[idempotency] API scenario: You need to retrieve current interface statistics from /api/v1/interfaces/GigabitEthernet1/1/statistics without modifying anything. Which HTTP method should you use?",
-    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method. Scenario reference: ENAUTO-188.",
+    "question": "[idempotency] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "correct": [
-      "get",
-      "GET"
+      "token",
+      "TOKEN"
     ]
   },
   {
@@ -2537,8 +2525,7 @@ window.pool = [
       "TFTP",
       "Syslog"
     ],
-    "c": "NETCONF",
-    "prompt": "Select one best answer. Scenario reference: ENAUTO-191."
+    "c": "NETCONF"
   },
   {
     "id": "ENAUTO-192",
@@ -2571,7 +2558,7 @@ window.pool = [
     "id": "ENAUTO-194",
     "type": "lab",
     "question": "[BGP neighbor checks] Determine the final device/service state from the JSON/API output below.",
-    "prompt": "JSON/API output:\n{\n  \"service\": \"BGP neighbor checks\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"active\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field. Scenario reference: ENAUTO-194.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"BGP neighbor checks\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"active\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "correct": "active"
   },
   {
@@ -2591,6 +2578,7 @@ window.pool = [
       "Merge to main"
     ],
     "prompt": "Scenario: OSPF health checks change automation. Order the listed steps from FIRST executed action to FINAL action. Use each step exactly once. Scenario reference: ENAUTO-195."
+    ]
   },
   {
     "id": "ENAUTO-196",
@@ -2602,8 +2590,7 @@ window.pool = [
       "TFTP",
       "Syslog"
     ],
-    "correct": "NETCONF",
-    "prompt": "Select one best answer. Scenario reference: ENAUTO-196."
+    "correct": "NETCONF"
   },
   {
     "id": "ENAUTO-197",
@@ -2625,11 +2612,11 @@ window.pool = [
   {
     "id": "ENAUTO-198",
     "type": "fill",
-    "question": "[AAA configuration] API scenario: You need to retrieve current interface statistics from /api/v1/interfaces/GigabitEthernet1/1/statistics without modifying anything. Which HTTP method should you use?",
-    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method. Scenario reference: ENAUTO-198.",
+    "question": "[AAA configuration] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "correct": [
-      "get",
-      "GET"
+      "retry",
+      "RETRY"
     ]
   },
   {
@@ -2637,6 +2624,7 @@ window.pool = [
     "type": "lab",
     "question": "[Syslog pipelines] Determine the final device/service state from the JSON/API output below.",
     "prompt": "JSON/API output:\n{\n  \"service\": \"Syslog pipelines\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"standby\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field. Scenario reference: ENAUTO-199.",
+    "prompt": "JSON/API output:\n{\n  \"service\": \"Syslog pipelines\",\n  \"device\": \"edge-rtr-1\",\n  \"status\": \"standby\",\n  \"last_change\": \"2026-03-20T14:33:12Z\"\n}\nReturn the exact value of the \"status\" field.",
     "c": [
       "standby",
       "STANDBY"

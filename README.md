@@ -1,6 +1,6 @@
 # CCNP ENAUTO Exam Simulator
 
-A browser-based CCNP ENAUTO practice exam simulator built as a static web app (no backend required). The app delivers timed exam attempts using a curated 200-question pool and supports multiple interaction formats, including drag-and-drop ordering and API-style scenario prompts.
+A browser-based CCNP ENAUTO practice exam simulator built as a static web app (no backend required). The app delivers timed exam attempts using a curated 1000-question pool and supports multiple interaction formats, including drag-and-drop ordering and API-style scenario prompts.
 
 ## Table of Contents
 
@@ -85,7 +85,7 @@ No framework, bundler, transpiler, or package manager is required for baseline u
 ```text
 .
 ├── index.html              # Application shell, styles, and modal markup
-├── pool.js                 # 200-question dataset attached to window.pool
+├── pool.js                 # 1000-question dataset attached to window.pool
 ├── core.js                 # Shared grading/type inference helpers (window.ExamCore)
 ├── script.js               # Runtime app state + UI rendering + timer + navigation
 ├── tests/

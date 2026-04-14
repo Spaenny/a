@@ -31,8 +31,8 @@ window.pool = [
   {
     "id": "ENAUTO-003",
     "type": "fill",
-    "question": "[YANG models] You need to read the current resource state from IOS XE without changing anything. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[YANG models] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "c": "get"
   },
   {
@@ -90,8 +90,8 @@ window.pool = [
   {
     "id": "ENAUTO-008",
     "type": "fill",
-    "question": "[Python requests] You need to create a new resource record on the controller/API endpoint. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[Python requests] API scenario: You are creating a new automation job by sending a JSON body to /api/v1/jobs on the controller. Which HTTP method should you use?",
+    "prompt": "Context: create a brand-new resource on the server. Answer with one lowercase HTTP method.",
     "correct": [
       "post",
       "POST"
@@ -155,8 +155,8 @@ window.pool = [
   {
     "id": "ENAUTO-013",
     "type": "fill",
-    "question": "[OAuth2 tokens] You must replace the full existing resource with a complete new representation. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[OAuth2 tokens] API scenario: You must fully replace VLAN policy object 113 at /api/v1/policies/113 with a complete payload. Which HTTP method should you use?",
+    "prompt": "Context: full replacement of an existing resource representation. Answer with one lowercase HTTP method.",
     "c": "put"
   },
   {
@@ -214,8 +214,8 @@ window.pool = [
   {
     "id": "ENAUTO-018",
     "type": "fill",
-    "question": "[SNMP telemetry] You only need to modify one or two fields on an existing resource. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[SNMP telemetry] API scenario: You need to change only the description field of interface GigabitEthernet1/3 at /api/v1/interfaces/GigabitEthernet1/3. Which HTTP method should you use?",
+    "prompt": "Context: partial update of an existing resource. Answer with one lowercase HTTP method.",
     "correct": [
       "patch",
       "PATCH"
@@ -279,8 +279,8 @@ window.pool = [
   {
     "id": "ENAUTO-023",
     "type": "fill",
-    "question": "[on-box Python] You must remove an existing resource from the API-managed inventory. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[on-box Python] API scenario: You need to remove obsolete webhook subscription sub-2023 from /api/v1/subscriptions/sub-2023. Which HTTP method should you use?",
+    "prompt": "Context: delete/remove an existing resource. Answer with one lowercase HTTP method.",
     "c": "delete"
   },
   {
@@ -338,8 +338,8 @@ window.pool = [
   {
     "id": "ENAUTO-028",
     "type": "fill",
-    "question": "[idempotency] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[idempotency] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "correct": [
       "json",
       "JSON"
@@ -403,8 +403,8 @@ window.pool = [
   {
     "id": "ENAUTO-033",
     "type": "fill",
-    "question": "[QoS policy deployment] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[QoS policy deployment] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "c": "yaml"
   },
   {
@@ -462,8 +462,8 @@ window.pool = [
   {
     "id": "ENAUTO-038",
     "type": "fill",
-    "question": "[AAA configuration] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[AAA configuration] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "correct": [
       "token",
       "TOKEN"
@@ -527,8 +527,8 @@ window.pool = [
   {
     "id": "ENAUTO-043",
     "type": "fill",
-    "question": "[YANG models] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[YANG models] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "c": "timeout"
   },
   {
@@ -586,8 +586,8 @@ window.pool = [
   {
     "id": "ENAUTO-048",
     "type": "fill",
-    "question": "[Python requests] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[Python requests] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "correct": [
       "retry",
       "RETRY"
@@ -651,8 +651,8 @@ window.pool = [
   {
     "id": "ENAUTO-053",
     "type": "fill",
-    "question": "[OAuth2 tokens] You need to read the current resource state from IOS XE without changing anything. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[OAuth2 tokens] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "c": "get"
   },
   {
@@ -710,8 +710,8 @@ window.pool = [
   {
     "id": "ENAUTO-058",
     "type": "fill",
-    "question": "[SNMP telemetry] You need to create a new resource record on the controller/API endpoint. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[SNMP telemetry] API scenario: You are creating a new automation job by sending a JSON body to /api/v1/jobs on the controller. Which HTTP method should you use?",
+    "prompt": "Context: create a brand-new resource on the server. Answer with one lowercase HTTP method.",
     "correct": [
       "post",
       "POST"
@@ -775,8 +775,8 @@ window.pool = [
   {
     "id": "ENAUTO-063",
     "type": "fill",
-    "question": "[on-box Python] You must replace the full existing resource with a complete new representation. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[on-box Python] API scenario: You must fully replace VLAN policy object 163 at /api/v1/policies/163 with a complete payload. Which HTTP method should you use?",
+    "prompt": "Context: full replacement of an existing resource representation. Answer with one lowercase HTTP method.",
     "c": "put"
   },
   {
@@ -834,8 +834,8 @@ window.pool = [
   {
     "id": "ENAUTO-068",
     "type": "fill",
-    "question": "[idempotency] You only need to modify one or two fields on an existing resource. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[idempotency] API scenario: You need to change only the description field of interface GigabitEthernet1/1 at /api/v1/interfaces/GigabitEthernet1/1. Which HTTP method should you use?",
+    "prompt": "Context: partial update of an existing resource. Answer with one lowercase HTTP method.",
     "correct": [
       "patch",
       "PATCH"
@@ -899,8 +899,8 @@ window.pool = [
   {
     "id": "ENAUTO-073",
     "type": "fill",
-    "question": "[QoS policy deployment] You must remove an existing resource from the API-managed inventory. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[QoS policy deployment] API scenario: You need to remove obsolete webhook subscription sub-2073 from /api/v1/subscriptions/sub-2073. Which HTTP method should you use?",
+    "prompt": "Context: delete/remove an existing resource. Answer with one lowercase HTTP method.",
     "c": "delete"
   },
   {
@@ -958,8 +958,8 @@ window.pool = [
   {
     "id": "ENAUTO-078",
     "type": "fill",
-    "question": "[AAA configuration] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[AAA configuration] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "correct": [
       "json",
       "JSON"
@@ -1023,8 +1023,8 @@ window.pool = [
   {
     "id": "ENAUTO-083",
     "type": "fill",
-    "question": "[YANG models] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[YANG models] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "c": "yaml"
   },
   {
@@ -1082,8 +1082,8 @@ window.pool = [
   {
     "id": "ENAUTO-088",
     "type": "fill",
-    "question": "[Python requests] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[Python requests] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "correct": [
       "token",
       "TOKEN"
@@ -1147,8 +1147,8 @@ window.pool = [
   {
     "id": "ENAUTO-093",
     "type": "fill",
-    "question": "[OAuth2 tokens] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[OAuth2 tokens] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "c": "timeout"
   },
   {
@@ -1206,8 +1206,8 @@ window.pool = [
   {
     "id": "ENAUTO-098",
     "type": "fill",
-    "question": "[SNMP telemetry] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[SNMP telemetry] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "correct": [
       "retry",
       "RETRY"
@@ -1271,8 +1271,8 @@ window.pool = [
   {
     "id": "ENAUTO-103",
     "type": "fill",
-    "question": "[on-box Python] You need to read the current resource state from IOS XE without changing anything. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[on-box Python] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "c": "get"
   },
   {
@@ -1330,8 +1330,8 @@ window.pool = [
   {
     "id": "ENAUTO-108",
     "type": "fill",
-    "question": "[idempotency] You need to create a new resource record on the controller/API endpoint. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[idempotency] API scenario: You are creating a new automation job by sending a JSON body to /api/v1/jobs on the controller. Which HTTP method should you use?",
+    "prompt": "Context: create a brand-new resource on the server. Answer with one lowercase HTTP method.",
     "correct": [
       "post",
       "POST"
@@ -1395,8 +1395,8 @@ window.pool = [
   {
     "id": "ENAUTO-113",
     "type": "fill",
-    "question": "[QoS policy deployment] You must replace the full existing resource with a complete new representation. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[QoS policy deployment] API scenario: You must fully replace VLAN policy object 213 at /api/v1/policies/213 with a complete payload. Which HTTP method should you use?",
+    "prompt": "Context: full replacement of an existing resource representation. Answer with one lowercase HTTP method.",
     "c": "put"
   },
   {
@@ -1454,8 +1454,8 @@ window.pool = [
   {
     "id": "ENAUTO-118",
     "type": "fill",
-    "question": "[AAA configuration] You only need to modify one or two fields on an existing resource. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[AAA configuration] API scenario: You need to change only the description field of interface GigabitEthernet1/3 at /api/v1/interfaces/GigabitEthernet1/3. Which HTTP method should you use?",
+    "prompt": "Context: partial update of an existing resource. Answer with one lowercase HTTP method.",
     "correct": [
       "patch",
       "PATCH"
@@ -1519,8 +1519,8 @@ window.pool = [
   {
     "id": "ENAUTO-123",
     "type": "fill",
-    "question": "[YANG models] You must remove an existing resource from the API-managed inventory. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[YANG models] API scenario: You need to remove obsolete webhook subscription sub-2123 from /api/v1/subscriptions/sub-2123. Which HTTP method should you use?",
+    "prompt": "Context: delete/remove an existing resource. Answer with one lowercase HTTP method.",
     "c": "delete"
   },
   {
@@ -1578,8 +1578,8 @@ window.pool = [
   {
     "id": "ENAUTO-128",
     "type": "fill",
-    "question": "[Python requests] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[Python requests] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "correct": [
       "json",
       "JSON"
@@ -1643,8 +1643,8 @@ window.pool = [
   {
     "id": "ENAUTO-133",
     "type": "fill",
-    "question": "[OAuth2 tokens] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[OAuth2 tokens] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "c": "yaml"
   },
   {
@@ -1702,8 +1702,8 @@ window.pool = [
   {
     "id": "ENAUTO-138",
     "type": "fill",
-    "question": "[SNMP telemetry] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[SNMP telemetry] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "correct": [
       "token",
       "TOKEN"
@@ -1767,8 +1767,8 @@ window.pool = [
   {
     "id": "ENAUTO-143",
     "type": "fill",
-    "question": "[on-box Python] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[on-box Python] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "c": "timeout"
   },
   {
@@ -1826,8 +1826,8 @@ window.pool = [
   {
     "id": "ENAUTO-148",
     "type": "fill",
-    "question": "[idempotency] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[idempotency] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "correct": [
       "retry",
       "RETRY"
@@ -1891,8 +1891,8 @@ window.pool = [
   {
     "id": "ENAUTO-153",
     "type": "fill",
-    "question": "[QoS policy deployment] You need to read the current resource state from IOS XE without changing anything. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[QoS policy deployment] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "c": "get"
   },
   {
@@ -1950,8 +1950,8 @@ window.pool = [
   {
     "id": "ENAUTO-158",
     "type": "fill",
-    "question": "[AAA configuration] You need to create a new resource record on the controller/API endpoint. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[AAA configuration] API scenario: You are creating a new automation job by sending a JSON body to /api/v1/jobs on the controller. Which HTTP method should you use?",
+    "prompt": "Context: create a brand-new resource on the server. Answer with one lowercase HTTP method.",
     "correct": [
       "post",
       "POST"
@@ -2015,8 +2015,8 @@ window.pool = [
   {
     "id": "ENAUTO-163",
     "type": "fill",
-    "question": "[YANG models] You must replace the full existing resource with a complete new representation. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[YANG models] API scenario: You must fully replace VLAN policy object 263 at /api/v1/policies/263 with a complete payload. Which HTTP method should you use?",
+    "prompt": "Context: full replacement of an existing resource representation. Answer with one lowercase HTTP method.",
     "c": "put"
   },
   {
@@ -2074,8 +2074,8 @@ window.pool = [
   {
     "id": "ENAUTO-168",
     "type": "fill",
-    "question": "[Python requests] You only need to modify one or two fields on an existing resource. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[Python requests] API scenario: You need to change only the description field of interface GigabitEthernet1/1 at /api/v1/interfaces/GigabitEthernet1/1. Which HTTP method should you use?",
+    "prompt": "Context: partial update of an existing resource. Answer with one lowercase HTTP method.",
     "correct": [
       "patch",
       "PATCH"
@@ -2139,8 +2139,8 @@ window.pool = [
   {
     "id": "ENAUTO-173",
     "type": "fill",
-    "question": "[OAuth2 tokens] You must remove an existing resource from the API-managed inventory. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[OAuth2 tokens] API scenario: You need to remove obsolete webhook subscription sub-2173 from /api/v1/subscriptions/sub-2173. Which HTTP method should you use?",
+    "prompt": "Context: delete/remove an existing resource. Answer with one lowercase HTTP method.",
     "c": "delete"
   },
   {
@@ -2198,8 +2198,8 @@ window.pool = [
   {
     "id": "ENAUTO-178",
     "type": "fill",
-    "question": "[SNMP telemetry] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[SNMP telemetry] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "correct": [
       "json",
       "JSON"
@@ -2263,8 +2263,8 @@ window.pool = [
   {
     "id": "ENAUTO-183",
     "type": "fill",
-    "question": "[on-box Python] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[on-box Python] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "c": "yaml"
   },
   {
@@ -2322,8 +2322,8 @@ window.pool = [
   {
     "id": "ENAUTO-188",
     "type": "fill",
-    "question": "[idempotency] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[idempotency] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "correct": [
       "token",
       "TOKEN"
@@ -2387,8 +2387,8 @@ window.pool = [
   {
     "id": "ENAUTO-193",
     "type": "fill",
-    "question": "[QoS policy deployment] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[QoS policy deployment] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "c": "timeout"
   },
   {
@@ -2446,8 +2446,8 @@ window.pool = [
   {
     "id": "ENAUTO-198",
     "type": "fill",
-    "question": "[AAA configuration] Choose the correct HTTP method for this API action. Fill in the HTTP verb/keyword you should use.",
-    "prompt": "Provide one lowercase HTTP method (for example: get, post, put, patch, delete).",
+    "question": "[AAA configuration] API scenario: You need to read interface telemetry for device edge-rtr-4 from /api/v1/devices/edge-rtr-4/telemetry and must not modify server state. Which HTTP method should you use?",
+    "prompt": "Context: read-only retrieval (no body update, no resource creation). Answer with one lowercase HTTP method.",
     "correct": [
       "retry",
       "RETRY"

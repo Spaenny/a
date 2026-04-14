@@ -14,7 +14,7 @@ assert.equal(pool.length, 200);
 
 for (const q of pool) {
   if (q.type === 'fill') {
-    assert.match(String(q.question), /Fill in the HTTP verb\/keyword you should use\./);
+    assert.match(String(q.question), /API scenario:/);
     assert.match(String(q.prompt), /lowercase HTTP method/);
   }
 

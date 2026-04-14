@@ -137,7 +137,26 @@ ui.themeBtn.addEventListener('click', () => {
 // ============================
 function initializeExam() {
   const pool = Array.isArray(window.pool) && window.pool.length ? deepClone(window.pool) : fallbackPool();
-  const picked = shuffle(pool).slice(0, EXAM_QUESTION_COUNT).map((q, idx) => {
+  const picked = [];
+  const seenQuestionKeys = new Set();
+  const shuffledPool = shuffle(pool);
+
+  for (const item of shuffledPool) {
+    if (picked.length >= EXAM_QUESTION_COUNT) break;
+    const key = normalizeText(`${item.question ?? item.q ?? ''}|${item.prompt ?? ''}`);
+    if (seenQuestionKeys.has(key)) continue;
+    seenQuestionKeys.add(key);
+    picked.push(item);
+  }
+
+  if (picked.length < EXAM_QUESTION_COUNT) {
+    for (const item of shuffledPool) {
+      if (picked.length >= EXAM_QUESTION_COUNT) break;
+      if (!picked.includes(item)) picked.push(item);
+    }
+  }
+
+  const prepared = picked.map((q, idx) => {
     const item = {
       ...q,
       _id: q.id ?? `q-${idx + 1}`,
@@ -149,7 +168,7 @@ function initializeExam() {
 
   state = {
     phase: 'exam',
-    questions: picked,
+    questions: prepared,
     currentIndex: 0,
     answers: Array(EXAM_QUESTION_COUNT).fill(null),
     flagged: Array(EXAM_QUESTION_COUNT).fill(false),

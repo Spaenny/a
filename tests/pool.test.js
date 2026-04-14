@@ -10,7 +10,7 @@ vm.runInContext(fs.readFileSync('pool.js', 'utf8'), context);
 
 const pool = context.window.pool;
 assert.equal(Array.isArray(pool), true);
-assert.equal(pool.length, 200);
+assert.equal(pool.length, 1000);
 
 const validTypes = new Set(['single', 'multiple', 'fill', 'lab', 'dragdrop']);
 const seenIds = new Set();
